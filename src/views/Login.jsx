@@ -9,7 +9,8 @@ import {
   ScrollView,
 } from "react-native";
 
-const Login = () => {
+
+const Login = ({ navigation }) => {
   const [text, onChangeText] = React.useState("");
   const [password, onChangePassword] = React.useState("");
 
@@ -53,7 +54,7 @@ const Login = () => {
         </Pressable>
 
         <Text style={styles.registerText}> ¿No tienes una cuenta? </Text>
-        <Pressable>
+        <Pressable onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.registerPress}> Regístrate </Text>
         </Pressable>
       </ScrollView>
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     color: "#333333",
-    textAlign: 'center',
+    textAlign: "center",
   },
   input: {
     marginTop: 20,
@@ -126,13 +127,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 18,
     color: "#333333",
-    textAlign: 'center',
+    textAlign: "center",
   },
   registerPress: {
     fontSize: 18,
     color: "#4A71C6",
     fontWeight: "bold",
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
