@@ -1,60 +1,71 @@
 import React from "react";
-import { View, Text, SafeAreaView, StyleSheet, Image, TextInput, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  Pressable,
+  ScrollView,
+} from "react-native";
 
 const Login = () => {
-  const [text, onChangeText] = React.useState('');
+  const [text, onChangeText] = React.useState("");
+  const [password, onChangePassword] = React.useState("");
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollContainer}>
+        <Image
+          source={require("../assets/logoLogin.png")}
+          style={styles.logo}
+        />
+        <Text style={styles.principalText}> Inicia Sesión </Text>
 
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          onChangeText={onChangeText}
+          value={text}
+          keyboardType="email-address"
+          inputMode="email"
+        />
 
-      <Text style={styles.principalText}> Inicia Sesión </Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Contraseña"
+          onChangeText={onChangePassword}
+          value={password}
+          secureTextEntry={true}
+        />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        onChangeText={onChangeText}
-        value={text}
-        keyboardType="email-address"
-        inputMode="email"
-      />
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}> Iniciar Sesión </Text>
+        </Pressable>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Contraseña"
-        onChangeText={onChangeText}
-        value={text}
-        secureTextEntry={true}
-      />
+        <Image
+          source={require("../assets/separatorBtns.png")}
+          style={styles.separator}
+        />
 
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}> Iniciar Sesión </Text>
-      </Pressable>
+        <Pressable style={styles.buttonGoogle}>
+          <Text style={styles.buttonTextG}> Inicia Sesión con Google </Text>
+        </Pressable>
 
-      <Text style={styles.oText}>
-        {' '}
-        ------------------------- o -------------------------{' '}
-      </Text>
-
-      <Pressable style={styles.buttonGoogle}>
-        <Text style={styles.buttonTextG}> Inicia Sesión con Google </Text>
-      </Pressable>
-
-      <Text style={styles.registerText}> ¿No tienes una cuenta? </Text>
-      <Pressable>
-        <Text style={styles.registerPress}> Regístrate </Text>
-      </Pressable>
+        <Text style={styles.registerText}> ¿No tienes una cuenta? </Text>
+        <Pressable>
+          <Text style={styles.registerPress}> Regístrate </Text>
+        </Pressable>
+      </ScrollView>
     </View>
-    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ADBDE6',
-    alignItems: 'center',
+    backgroundColor: "#ADBDE6",
+    alignItems: "center",
   },
   logo: {
     width: 250,
@@ -65,59 +76,63 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
     fontSize: 30,
-    fontWeight: 'bold',
-    color: '#333333',
+    fontWeight: "bold",
+    color: "#333333",
+    textAlign: 'center',
   },
   input: {
     marginTop: 20,
     width: 280,
     height: 50,
     borderWidth: 2,
-    borderColor: '#EFEFEF',
+    borderColor: "#EFEFEF",
     borderRadius: 8,
     fontSize: 18,
     padding: 13,
   },
-  oText: {
-    fontSize: 18,
+  separator: {
+    width: 270,
+    height: 15,
   },
   button: {
     marginTop: 20,
     marginBottom: 10,
     width: 280,
     height: 45,
-    backgroundColor: '#FFF9F6',
+    backgroundColor: "#FFF9F6",
     borderRadius: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonText: {
     fontSize: 18,
     padding: 11,
-    color: '#333333',
+    color: "#333333",
   },
   buttonGoogle: {
-    marginTop: 10,
+    marginTop: 15,
     marginBottom: 10,
     width: 280,
     height: 45,
-    backgroundColor: '#4A71C6',
+    backgroundColor: "#4A71C6",
     borderRadius: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonTextG: {
     fontSize: 18,
     padding: 11,
-    color: '#FFF9F6',
+    color: "#FFF9F6",
   },
   registerText: {
     marginTop: 5,
     fontSize: 18,
-    color: '#333333',
+    color: "#333333",
+    textAlign: 'center',
   },
   registerPress: {
     fontSize: 18,
-    color: '#4A71C6',
-    fontWeight: 'bold',
+    color: "#4A71C6",
+    fontWeight: "bold",
+    textAlign: 'center',
   },
 });
 
