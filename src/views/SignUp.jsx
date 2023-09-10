@@ -7,12 +7,27 @@ import {
   TextInput,
   Pressable,
   ScrollView,
+  Alert
 } from "react-native";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+import { auth } from "../services/db";
 
 const SignUp = ({ navigation }) => {
-  const [text, onChangeText] = React.useState("");
-  const [email, onChangeEmail] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
+  const [text, setName] = React.useState();
+  const [email, setEmail] = React.useState();
+  const [password, setPassword] = React.useState();
+
+  const handleSignUp = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      Alert.alert("Registo exitoso", `Bienvenido ${text}`);
+      navigation.navigate("Home");
+    } catch (error) {
+      console.error(error);
+      Alert.alert("Error", "Parece que ha ocurrido un error, intentalo de nuevo");
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -28,15 +43,14 @@ const SignUp = ({ navigation }) => {
           <TextInput
             style={styles.input}
             placeholder="Nombre Completo"
-            onChangeText={onChangeText}
+            onChangeText={(text) => setName(text)}
             value={text}
           />
 
           <TextInput
             style={styles.input}
             placeholder="Email"
-            onChangeText={onChangeEmail}
-            value={email}
+            onChangeText={(text) => setEmail(text)}
             keyboardType="email-address"
             inputMode="email"
           />
@@ -44,12 +58,12 @@ const SignUp = ({ navigation }) => {
           <TextInput
             style={styles.input}
             placeholder="Contraseña"
-            onChangeText={onChangePassword}
+            onChangeText={(text) => setPassword(text)}
             value={password}
             secureTextEntry={true}
           />
 
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={handleSignUp}>
             <Text style={styles.buttonText}> Registrarse </Text>
           </Pressable>
 
