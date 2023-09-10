@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -16,29 +15,34 @@ const Tab = createBottomTabNavigator();
 
 const BottomNavBar = () => {
   return (
-      <Tab.Navigator
-        initialRouteName={homeName}
-        screenOptions={({ route }) => {
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            let routeName = route.name;
+    <Tab.Navigator
+      initialRouteName={homeName}
+      backBehavior={"none"}
+      screenOptions={({ route }) => ({
+        tabBarActiveTintColor: "#4A71C6",
+        tabBarInactiveTintColor: "#ADBDE6",
+        tabBarLabelStyle: { paddingBottom: 5, fontSize: 13 },
+        tabBarStyle: { height: 60},
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          let routeName = route.name;
 
-            if (routeName === "Principal") {
-              iconName = focused ? "home" : "home-outline";
-            } else if (routeName === "Categorías") {
-              iconName = focused ? "list" : "list-ouline";
-            } else if (routeName === "Carrito") {
-              iconName = focused ? "cart" : "cart-ouline";
-            }
+          if (routeName === "Principal") {
+            iconName = focused ? "home" : "home-outline";
+          } else if (routeName === "Categorías") {
+            iconName = focused ? "list" : "list-outline";
+          } else if (routeName === "Carrito") {
+            iconName = focused ? "cart" : "cart-outline";
+          }
 
-            return <Ionicons name={iconName} size={size} color={color} />;
-          };
-        }}
-      >
-        <Tab.Screen name={homeName} component={Home} />
-        <Tab.Screen name={categoriesName} component={Categories} />
-        <Tab.Screen name={shopName} component={Shop} />
-      </Tab.Navigator>
+          return <Ionicons name={iconName} size={28} color={color} />;
+        },
+      })}
+    >
+      <Tab.Screen name={homeName} component={Home} />
+      <Tab.Screen name={categoriesName} component={Categories} />
+      <Tab.Screen name={shopName} component={Shop} />
+    </Tab.Navigator>
   );
 };
 
