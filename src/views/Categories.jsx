@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 
 const Categories = () => {
   return (
-    <View style={styles.container}>
+    <View>
       <Text> Categories funciona </Text>
     </View>
   );
