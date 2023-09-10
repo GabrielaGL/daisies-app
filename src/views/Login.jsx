@@ -7,12 +7,28 @@ import {
   TextInput,
   Pressable,
   ScrollView,
+  Alert,
 } from "react-native";
+import {signInWithEmailAndPassword} from "firebase/auth";
+
+import { auth } from "../services/db";
+
 
 
 const Login = ({ navigation }) => {
-  const [text, onChangeText] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
+
+  const [email, setEmail] = React.useState();
+  const [password, setPassword] = React.useState();
+
+  const logged = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      Alert.alert('Iniciando Sesión', 'Accediendo...');
+      navigation.navigate("Home")
+    } catch (error) {
+        console.error(error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -26,8 +42,7 @@ const Login = ({ navigation }) => {
         <TextInput
           style={styles.input}
           placeholder="Email"
-          onChangeText={onChangeText}
-          value={text}
+          onChangeText={(text) => setEmail(text)}
           keyboardType="email-address"
           inputMode="email"
         />
@@ -35,12 +50,11 @@ const Login = ({ navigation }) => {
         <TextInput
           style={styles.input}
           placeholder="Contraseña"
-          onChangeText={onChangePassword}
-          value={password}
+          onChangeText={(text) => setPassword(text)}
           secureTextEntry={true}
         />
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={logged}>
           <Text style={styles.buttonText}> Iniciar Sesión </Text>
         </Pressable>
 
@@ -71,10 +85,11 @@ const styles = StyleSheet.create({
   logo: {
     width: 250,
     height: 160,
-    marginTop: 50,
+    marginTop: 30,
+    alignSelf: 'center',
   },
   principalText: {
-    marginTop: 20,
+    marginTop: 15,
     marginBottom: 10,
     fontSize: 30,
     fontWeight: "bold",
