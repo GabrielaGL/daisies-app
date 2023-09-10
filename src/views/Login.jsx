@@ -17,11 +17,11 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
 
-  const logged = async () => {
+  const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       Alert.alert("Iniciando Sesión", "Espere un momento");
-      navigation.navigate("Home");
+      navigation.navigate("BottomNavBar");
     } catch (error) {
       console.error(error);
       Alert.alert("Error", "El usuario o la contraseña son incorrectos");
@@ -52,7 +52,7 @@ const Login = ({ navigation }) => {
           secureTextEntry={true}
         />
 
-        <Pressable style={styles.button} onPress={logged}>
+        <Pressable style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}> Iniciar Sesión </Text>
         </Pressable>
 
@@ -66,7 +66,7 @@ const Login = ({ navigation }) => {
         </Pressable>
 
         <Text style={styles.registerText}> ¿No tienes una cuenta? </Text>
-        <Pressable onPress={() => navigation.navigate("SignUp")}>
+        <Pressable onPress={() => navigation.navigate("Registro")}>
           <Text style={styles.registerPress}> Regístrate </Text>
         </Pressable>
       </ScrollView>

@@ -22,7 +22,7 @@ const SignUp = ({ navigation }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       Alert.alert("Registo exitoso", `Bienvenido ${text}`);
-      navigation.navigate("Home");
+      navigation.navigate("BottomNavBar");
     } catch (error) {
       console.error(error);
       Alert.alert("Error", "Parece que ha ocurrido un error, intentalo de nuevo");
