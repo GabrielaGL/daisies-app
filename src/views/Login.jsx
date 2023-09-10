@@ -9,24 +9,22 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import {signInWithEmailAndPassword} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { auth } from "../services/db";
 
-
-
 const Login = ({ navigation }) => {
-
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
 
   const logged = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      Alert.alert('Iniciando Sesión', 'Accediendo...');
-      navigation.navigate("Home")
+      Alert.alert("Iniciando Sesión", "Espere un momento");
+      navigation.navigate("Home");
     } catch (error) {
-        console.error(error);
+      console.error(error);
+      Alert.alert("Error", "El usuario o la contraseña son incorrectos");
     }
   };
 
@@ -68,7 +66,7 @@ const Login = ({ navigation }) => {
         </Pressable>
 
         <Text style={styles.registerText}> ¿No tienes una cuenta? </Text>
-        <Pressable onPress={() => navigation.navigate('SignUp')}>
+        <Pressable onPress={() => navigation.navigate("SignUp")}>
           <Text style={styles.registerPress}> Regístrate </Text>
         </Pressable>
       </ScrollView>
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 160,
     marginTop: 30,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   principalText: {
     marginTop: 15,
