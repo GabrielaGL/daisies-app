@@ -4,12 +4,12 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 import Home from "../views/Home";
 import Categories from "../views/Categories";
-import Shop from "../views/Shop";
+import Cart from "../views/Cart";
 
 // Screen names
 const homeName = "Principal";
 const categoriesName = "Categorías";
-const shopName = "Carrito";
+const cartName = "Carrito";
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +41,7 @@ const BottomNavBar = () => {
     >
       <Tab.Screen name={homeName} component={Home} />
       <Tab.Screen name={categoriesName} component={Categories} />
-      <Tab.Screen name={shopName} component={Shop} />
+      <Tab.Screen name={cartName} component={Cart} />
     </Tab.Navigator>
   );
 };
