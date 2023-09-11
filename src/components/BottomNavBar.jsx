@@ -7,9 +7,9 @@ import Categories from "../views/Categories";
 import Cart from "../views/Cart";
 
 // Screen names
-const homeName = "Principal";
-const categoriesName = "Categorías";
-const cartName = "Carrito";
+const homeName = "Home";
+const categoriesName = "Categories";
+const cartName = "Cart";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,11 +27,11 @@ const BottomNavBar = () => {
           let iconName;
           let routeName = route.name;
 
-          if (routeName === "Principal") {
+          if (routeName === "Home") {
             iconName = focused ? "home" : "home-outline";
-          } else if (routeName === "Categorías") {
+          } else if (routeName === "Categories") {
             iconName = focused ? "list" : "list-outline";
-          } else if (routeName === "Carrito") {
+          } else if (routeName === "Cart") {
             iconName = focused ? "cart" : "cart-outline";
           }
 
