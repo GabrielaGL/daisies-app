@@ -36,7 +36,13 @@ function Router() {
           }}
         />
 
-        <Stack.Screen name="FakeStore" component={BottomNavBar} />
+        <Stack.Screen name="FakeStore" component={BottomNavBar} options={{
+          headerBackVisible: false,
+          headerTintColor: "#333333",
+            headerTitleAlign: "center",
+          headerStyle: { backgroundColor: "#ADBDE6" },
+          }} 
+          />
 
         <Stack.Screen
           name="Jewelery"

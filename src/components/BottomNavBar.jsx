@@ -22,7 +22,7 @@ const BottomNavBar = () => {
         tabBarActiveTintColor: "#4A71C6",
         tabBarInactiveTintColor: "#ADBDE6",
         tabBarLabelStyle: { paddingBottom: 5, fontSize: 13 },
-        tabBarStyle: { height: 60},
+        tabBarStyle: { height: 60 },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           let routeName = route.name;
@@ -39,9 +39,24 @@ const BottomNavBar = () => {
         },
       })}
     >
-      <Tab.Screen name={homeName} component={Home} />
-      <Tab.Screen name={categoriesName} component={Categories} />
-      <Tab.Screen name={cartName} component={Cart} />
+      <Tab.Screen
+        name={homeName}
+        component={Home}
+        options={{
+          headerTintColor: "#EFEFEF",
+          headerStyle: { backgroundColor: "#EFEFEF" },
+        }}
+      />
+      <Tab.Screen name={categoriesName} component={Categories} options={{
+          headerTintColor: "#ADBDE6",
+          headerStyle: { backgroundColor: "#ADBDE6" },
+        }}/>
+      <Tab.Screen name={cartName} component={Cart}
+      options={{
+          headerTintColor: "#727272",
+          headerTitleAlign: "center",
+          headerStyle: { backgroundColor: "#EFEFEF" },
+        }} />
     </Tab.Navigator>
   );
 };

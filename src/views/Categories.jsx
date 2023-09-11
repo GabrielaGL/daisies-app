@@ -42,11 +42,13 @@ const Categories = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#ADBDE6",
+    
+  },
+  rows: {
     alignSelf: "center",
     marginTop: 50,
     backgroundColor: "#ADBDE6",
-  },
-  rows: {
     flexDirection: "row",
   },
   btnContainer: {
