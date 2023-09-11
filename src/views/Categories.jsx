@@ -1,20 +1,18 @@
 import React from "react";
 import { Pressable, View, Image, StyleSheet } from "react-native";
 
-import CardOfProducts from "../components/cardOfProducts";
-
-const Categories = () => {
+const Categories = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.rows}>
-        <Pressable style={styles.btnContainer}>
+        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Joyería")}>
           <Image
             source={require("../assets/btnJewelery.png")}
             style={styles.imgBtn}
           />
         </Pressable>
 
-        <Pressable style={styles.btnContainer}>
+        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Electrónica")} >
           <Image
             source={require("../assets/btnElectronics.png")}
             style={styles.imgBtn}
@@ -23,14 +21,14 @@ const Categories = () => {
       </View>
 
       <View style={styles.rows}>
-        <Pressable style={styles.btnContainer}>
+        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Ropa de Hombre")}>
           <Image
             source={require("../assets/btnMensclothing.png")}
             style={styles.imgBtn}
           />
         </Pressable>
 
-        <Pressable style={styles.btnContainer}>
+        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Ropa de Mujer")}>
           <Image
             source={require("../assets/btnWomensclothing.png")}
             style={styles.imgBtn}
