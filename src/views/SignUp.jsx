@@ -21,11 +21,11 @@ const SignUp = ({ navigation }) => {
   const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      Alert.alert("Registo exitoso", `Bienvenido ${text}`);
+      Alert.alert("Successful registration", "Welcome to FakeStore");
       navigation.navigate("BottomNavBar");
     } catch (error) {
       console.error(error);
-      Alert.alert("Error", "Parece que ha ocurrido un error, intentalo de nuevo");
+      Alert.alert("Error", "It seems that an error has occurred, please try again");
     }
   };
 
@@ -38,11 +38,11 @@ const SignUp = ({ navigation }) => {
             source={require("../assets/logoSignUp.png")}
           />
 
-          <Text style={styles.principalText}> Regístrate </Text>
+          <Text style={styles.principalText}> Sign Up </Text>
 
           <TextInput
             style={styles.input}
-            placeholder="Nombre Completo"
+            placeholder="Name"
             onChangeText={(text) => setName(text)}
             value={text}
           />
@@ -57,19 +57,19 @@ const SignUp = ({ navigation }) => {
 
           <TextInput
             style={styles.input}
-            placeholder="Contraseña"
+            placeholder="Password"
             onChangeText={(text) => setPassword(text)}
             value={password}
             secureTextEntry={true}
           />
 
           <Pressable style={styles.button} onPress={handleSignUp}>
-            <Text style={styles.buttonText}> Registrarse </Text>
+            <Text style={styles.buttonText}> Create an account </Text>
           </Pressable>
 
-          <Text style={styles.signUpText}> ¿Ya tienes una cuenta? </Text>
+          <Text style={styles.signUpText}> Already have an account? </Text>
           <Pressable onPress={() => navigation.navigate("Login")}>
-            <Text style={styles.signUpPress}> Inicia Sesión </Text>
+            <Text style={styles.signUpPress}> Sign in </Text>
           </Pressable>
         </View>
       </ScrollView>

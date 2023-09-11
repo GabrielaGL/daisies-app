@@ -20,11 +20,11 @@ const Login = ({ navigation }) => {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      Alert.alert("Iniciando Sesión", "Espere un momento");
-      navigation.navigate("BottomNavBar");
+      Alert.alert("Successful login", "Welcome to FakeStore");
+      navigation.navigate("FakeStore");
     } catch (error) {
       console.error(error);
-      Alert.alert("Error", "El usuario o la contraseña son incorrectos");
+      Alert.alert("Error", "The username or password is incorrect.");
     }
   };
 
@@ -35,7 +35,7 @@ const Login = ({ navigation }) => {
           source={require("../assets/logoLogin.png")}
           style={styles.logo}
         />
-        <Text style={styles.principalText}> Inicia Sesión </Text>
+        <Text style={styles.principalText}> Sign In </Text>
 
         <TextInput
           style={styles.input}
@@ -47,13 +47,13 @@ const Login = ({ navigation }) => {
 
         <TextInput
           style={styles.input}
-          placeholder="Contraseña"
+          placeholder="Password"
           onChangeText={(text) => setPassword(text)}
           secureTextEntry={true}
         />
 
         <Pressable style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}> Iniciar Sesión </Text>
+          <Text style={styles.buttonText}> Sign In </Text>
         </Pressable>
 
         <Image
@@ -62,12 +62,12 @@ const Login = ({ navigation }) => {
         />
 
         <Pressable style={styles.buttonGoogle}>
-          <Text style={styles.buttonTextG}> Inicia Sesión con Google </Text>
+          <Text style={styles.buttonTextG}> Sign In With Google </Text>
         </Pressable>
 
-        <Text style={styles.registerText}> ¿No tienes una cuenta? </Text>
-        <Pressable onPress={() => navigation.navigate("Registro")}>
-          <Text style={styles.registerPress}> Regístrate </Text>
+        <Text style={styles.registerText}> New to Fake Store? </Text>
+        <Pressable onPress={() => navigation.navigate("Sign Up")}>
+          <Text style={styles.registerPress}> Create an account </Text>
         </Pressable>
       </ScrollView>
     </View>
