@@ -17,8 +17,7 @@ const ElectronicsCards = ({ navigation }) => {
     if (index === 0) {
       return (
         <View style={styles.firstCard}>
-          <Image />
-          <Text> Esta caja es diferente </Text>
+          <Image source={require("../assets/btnElectronics.png")} style={styles.image}  />
         </View>
       );
     } else {

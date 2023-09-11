@@ -10,8 +10,7 @@ const JeweleryCards = ({navigation}) => {
     if (index === 0) {
       return (
         <View style={styles.firstCard}>
-          <Image />
-          <Text> Esta caja es diferente </Text>
+          <Image source={require("../assets/btnJewelery.png")} style={styles.image}  />
         </View>
       );
     } else {
