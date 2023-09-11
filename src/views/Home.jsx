@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-import CardOfProducts from '../components/cardOfProducts';
+import CardOfProducts from "../components/CardOfProducts";
 
 const Home = () => { 
 
