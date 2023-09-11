@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import {
 import { useCart } from "../components/CartContext";
 
 const Cart = () => {
-  const { cart, deleteProductCart } = useCart();
+  const { cart, deleteProductCart, totalProducts } = useCart();
 
   return (
     <View style={styles.container}>
@@ -25,15 +25,23 @@ const Cart = () => {
                 {" "}
                 USD $ <Text style={styles.priceNum}> {product.price} </Text>
               </Text>
+
               <Text style={styles.title}> {product.title}</Text>
 
-              <Pressable style={styles.btnContainer} onPress={() => deleteProductCart(product.title)}>
+              <Pressable
+                style={styles.btnContainer}
+                onPress={() => deleteProductCart(product.title)}
+              >
                 <Text style={styles.btnText}> Delete from Cart </Text>
               </Pressable>
             </View>
           </View>
         ))}
       </ScrollView>
+      <View style={styles.totalContainer}>
+        <Text style={styles.subtotal}> Subtotal </Text>
+        <Text style={styles.total}> Total </Text>
+      </View>
     </View>
   );
 };
@@ -81,13 +89,26 @@ const styles = StyleSheet.create({
     height: 28,
     width: 150,
     marginLeft: 20,
-
   },
   btnText: {
     textAlign: "center",
     color: "#FEFEFE",
     marginTop: 2,
     fontSize: 17,
+  },
+  totalContainer: {
+    height: 60,
+    backgroundColor: "#FEFEFE",
+    padding: 10,
+    paddingLeft: 250,
+    alignContent: "flex-end",
+  },
+  subtotal: {
+    color: "#333333",
+  },
+  total: {
+    color: "#333333",
+    fontSize: 20,
   },
 });
 
