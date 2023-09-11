@@ -18,11 +18,13 @@ const CardOfProducts = () => {
       return (
         <View style={[styles.productRow, index % 2 === 0 && styles.evenRow]}>
           <View style={styles.card}>
-            <View style={styles.imageContainer}>
-              <Image source={{ uri: item.image }} style={styles.image} />
-            </View>
-            <Text style={styles.price}> USD $ <Text style={styles.priceNum}>{item.price} </Text>  </Text>
+            <Image source={{ uri: item.image }} style={styles.image} />
+            <Text style={styles.price}>
+              {" "}
+              USD $ <Text style={styles.priceNum}>{item.price} </Text>{" "}
+            </Text>
             <Text style={styles.title}> {item.title.slice(0, 30)} </Text>
+            <Text> {item.category} </Text>
           </View>
         </View>
       );
@@ -48,11 +50,8 @@ const styles = StyleSheet.create({
     margin: 10,
     alignSelf: "center",
   },
-  productRow: {
-    flexDirection: "row",
-  },
   evenRow: {
-    alignItems: "flex-start",
+    marginTop: -57,
   },
   firstCard: {
     backgroundColor: "#FEFEFE",
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
     paddingLeft: 7,
     marginTop: 5,
     color: "#727272",
-  }
+  },
 });
 
 export default CardOfProducts;
