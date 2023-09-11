@@ -1,10 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  Pressable,
+} from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 import ApiService from "../services/api";
 
 const CardOfProducts = () => {
   const api = ApiService();
+  const navigation = useNavigation();  
 
   const renderCardOfProduct = ({ item, index }) => {
     if (index === 0) {
@@ -17,14 +26,25 @@ const CardOfProducts = () => {
     } else {
       return (
         <View style={[styles.productRow, index % 2 === 0 && styles.evenRow]}>
-          <View style={styles.card}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <Text style={styles.price}>
-              {" "}
-              USD $ <Text style={styles.priceNum}>{item.price} </Text>{" "}
-            </Text>
-            <Text style={styles.title}> {item.title.slice(0, 30)} </Text>
-          </View>
+          <Pressable
+            onPress={() =>
+              navigation.navigate("Details", {
+                title: item.title,
+                image: item.image,
+                price: item.price,
+                description: item.description,
+              })
+            }
+          >
+            <View style={styles.card}>
+              <Image source={{ uri: item.image }} style={styles.image} />
+              <Text style={styles.price}>
+                {" "}
+                USD $ <Text style={styles.priceNum}>{item.price} </Text>{" "}
+              </Text>
+              <Text style={styles.title}> {item.title.slice(0, 30)} </Text>
+            </View>
+          </Pressable>
         </View>
       );
     }
@@ -74,6 +94,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     width: "80%",
     height: 150,
+    resizeMode: "contain",
   },
   price: {
     paddingLeft: 7,

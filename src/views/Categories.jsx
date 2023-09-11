@@ -5,14 +5,14 @@ const Categories = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.rows}>
-        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Joyería")}>
+        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Jewelery")}>
           <Image
             source={require("../assets/btnJewelery.png")}
             style={styles.imgBtn}
           />
         </Pressable>
 
-        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Electrónica")} >
+        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Electronics")} >
           <Image
             source={require("../assets/btnElectronics.png")}
             style={styles.imgBtn}
@@ -21,14 +21,14 @@ const Categories = ({ navigation }) => {
       </View>
 
       <View style={styles.rows}>
-        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Ropa de Hombre")}>
+        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Men's Clothing")}>
           <Image
             source={require("../assets/btnMensclothing.png")}
             style={styles.imgBtn}
           />
         </Pressable>
 
-        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Ropa de Mujer")}>
+        <Pressable style={styles.btnContainer} onPress={() => navigation.navigate("Women's Clothing")}>
           <Image
             source={require("../assets/btnWomensclothing.png")}
             style={styles.imgBtn}

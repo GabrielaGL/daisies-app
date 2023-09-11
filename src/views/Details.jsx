@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     width: "80%",
     height: 250,
+    resizeMode: "contain",
   },
   price: {
     marginTop: 10,
