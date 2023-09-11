@@ -1,21 +1,43 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 
+import { useCart } from "../components/CartContext";
+
 const Details = ({ route }) => {
+  const { addToCart } = useCart();
+
+  const handleCartBtn = ({title, price, image}) => {
+    addToCart({title, price, image});
+  };
+
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <Image source={{ uri: route.params.image }} style={styles.image} />
-        <Text style={styles.price}> USD $ <Text style={styles.priceNum}> {route.params.price} </Text> </Text>
-        <Text style={styles.title}> {route.params.title} </Text>
-        <Text style={styles.description}> {route.params.description} </Text>
+      <View style={styles.container}>
+        <View style={styles.card}>
+          <Image source={{ uri: route.params.image }} style={styles.image} />
+          <Text style={styles.price}>
+            {" "}
+            USD $ <Text style={styles.priceNum}>
+              {" "}
+              {route.params.price}{" "}
+            </Text>{" "}
+          </Text>
+          <Text style={styles.title}> {route.params.title} </Text>
+          <Text style={styles.description}> {route.params.description} </Text>
 
-        <Pressable style={styles.btnContainer}>
-          <Text style={styles.btnText}> Add to Cart </Text>
-        </Pressable>
-
+          <Pressable
+            style={styles.btnContainer}
+            onPress={() =>
+              handleCartBtn({
+                title: route.params.title,
+                price: route.params.price,
+                image: route.params.image,
+              })
+            }
+          >
+            <Text style={styles.btnText}> Add to Cart </Text>
+          </Pressable>
+        </View>
       </View>
-    </View>
   );
 };
 
