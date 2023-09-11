@@ -9,8 +9,6 @@ const ApiService = () => {
   const [mensClothing, setMensClothing] = useState([]);
   const [womensClothing, setWomensClothing] = useState([]);
 
-
-  
   const getProducts = () => {
     fetch(api_url + "/products?limit=20")
       .then((res) => res.json())
@@ -20,31 +18,32 @@ const ApiService = () => {
 
   const getJeweleryCategory = () => {
     fetch(api_url + "/products/category/jewelery")
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((json) => setJewelery(json))
       .catch((error) => console.error(error));
   };
 
   const getElectronicCategory = () => {
     fetch(api_url + "/products/category/electronics")
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((json) => setElectronic(json))
       .catch((error) => console.error(error));
   };
 
   const getMensClothingCategory = () => {
     fetch(api_url + "/products/category/men's%20clothing")
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((json) => setMensClothing(json))
       .catch((error) => console.error(error));
   };
 
   const getWomensClothingCategory = () => {
     fetch(api_url + "/products/category/women's%20clothing")
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((json) => setWomensClothing(json))
       .catch((error) => console.error(error));
   };
+
 
   useEffect(() => {
     getProducts();
