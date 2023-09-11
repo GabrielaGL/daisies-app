@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
-const Home = () => {
+import CardOfProducts from '../components/cardOfProducts';
+
+const Home = () => { 
+
   return (
     <View style={styles.container}>
-      <Text> Home funciona </Text>
-      <View>
-      </View>
+      <CardOfProducts />
     </View>
   );
 };
@@ -16,18 +17,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     backgroundColor: "#EFEFEF",
-  },
-  navContainer: {
-    flex: 1,
-    backgroundColor: "#FEFEFE",
-    borderColor: "#E6E6E6",
-    borderWidth: 1,
-    height: 30,
-    alignSelf: "flex-end",
-  },
-  imgNavBar: {
-    height: 25,
-    width: 20,
   },
 });
 
