@@ -24,7 +24,6 @@ const CardOfProducts = () => {
               USD $ <Text style={styles.priceNum}>{item.price} </Text>{" "}
             </Text>
             <Text style={styles.title}> {item.title.slice(0, 30)} </Text>
-            <Text> {item.category} </Text>
           </View>
         </View>
       );
